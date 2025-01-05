@@ -18,8 +18,8 @@ class ObjectDetection:
 
     def smoke_image_mail_sender(self):
 
-        strFrom = 'testmailid@mail.com'
-        strTo = 'testmailid@mail.com'
+        strFrom = 'tan_kai_jie@soc.uum.edu.my'
+        strTo = 'potato02kai@gmail.com'
 
         # Create the root message and fill in the from, to, and subject headers
         msgRoot = MIMEMultipart('related')
@@ -51,7 +51,7 @@ class ObjectDetection:
 
         smtp.starttls()
 
-        smtp.login('testmailid@mail.com', 'the-security-string')
+        smtp.login('tan_kai_jie@soc.uum.edu.my', '248613-Dolce')
         //set up an dev email with your prefered email provider.
 
         print("mail id and password correct")
