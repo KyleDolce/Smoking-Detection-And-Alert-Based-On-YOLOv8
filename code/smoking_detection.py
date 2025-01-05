@@ -1,13 +1,11 @@
 import torch
-
 import cv2
+import os  # Add os import
 from time import time
 from ultralytics import YOLO
-
 from supervision.draw.color import ColorPalette
 from supervision import Detections
 from supervision import BoxAnnotator
-
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
@@ -52,7 +50,7 @@ class ObjectDetection:
         smtp.starttls()
 
         smtp.login('tan_kai_jie@soc.uum.edu.my', '248613-Dolce')
-        //set up an dev email with your prefered email provider.
+        #set up an dev email with your prefered email provider.
 
         print("mail id and password correct")
 
@@ -73,11 +71,16 @@ class ObjectDetection:
 
         self.CLASS_NAMES_DICT = self.model.model.names
 
-        self.box_annotator = BoxAnnotator(color=ColorPalette.default(), thickness=2, text_thickness=1, text_scale=1.5)
+        # Define colors for the box annotator
+        colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255)]  # RGB colors
+        self.box_annotator = BoxAnnotator(
+            color=ColorPalette(colors=colors),
+            thickness=2
+        )
 
     def load_model(self):
-
-        model = YOLO("detection_module.pt")
+        model_path = os.path.join("pytorch module", "detection_module.pt")
+        model = YOLO(model_path)
         model.fuse()
         return model
 
